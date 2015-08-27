@@ -40,3 +40,4 @@ Besides of the basic required functions, I also added some logics for input rest
 This web app is in a water-color visual style and I would like to offer users a simple, fresh and elegant experience.
 
 This was my first time working with Mobile Anuglar UI and I really appreciated this opportunity working on builing a mobile web application.
+# mobile_notes_app
