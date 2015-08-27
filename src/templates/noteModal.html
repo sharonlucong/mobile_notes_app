@@ -1,0 +1,36 @@
+<div ui-content-for="modals">
+    <div class="modal modal-overlay" ui-if="noteModal" ui-state='noteModal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" ui-turn-off="noteModal">&times;</button>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" class="form-control" placeholder="Title (no more than 20 characters)" ng-model="newNote.title">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" class="form-control date-input" placeholder="Date" ng-model="newNote.date" ng-focus="focus=true;" readonly>
+                        <date-picker ng-show="focus" ng-model="newNote.date" on-date-selected="focus=false;">
+                        </date-picker>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" rows="5" placeholder="Content (no more than 50 characters)" ng-model="newNote.content"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <div ng-show="newNote.title.length>20 || newNote.content.length>50" class="alert alert-danger" role="alert">
+                        <span class="pull-left">Your text is too long...</span>
+                        <br/>
+                    </div>
+                    <div ng-show="!newNote.title && !newNote.content && !newNote.date" class="alert alert-warning" role="alert">
+                        <span class="pull-left">At least one is not null</span>
+                        <br/>
+                    </div>
+                    <button ui-turn-off="noteModal" class="btn btn-default">Close</button>
+                    <button ng-disabled="newNote.title.length>20 || newNote.content.length>50 || (!newNote.title && !newNote.content && !newNote.date)" ui-turn-off="noteModal" class="btn btn-primary" ng-click="addOrUpdate(newNote)">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

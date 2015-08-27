@@ -1,0 +1,31 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="container-fluid">
+            <div ng-repeat="note in notes track by $index">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <div style="margin-top: 30px;">
+                            <input type="checkbox" ng-model="note.done">
+                        </div>
+                    </div>
+                    <div class="col-xs-10" style="margin-left: 10px;">
+                        <div class="panel panel-default" toucharea="showInfo(note)" drag-to-dismiss="deleteNote(note)">
+                            <div class="panel-heading">
+                                <h3 class="panel-title done-{{ note.done }} wrapword">{{note.title}}
+                               
+                                    <span class="pull-right">
+                                        <small>{{note.date}}</small>
+                                    </span>                             
+                                </h3>
+                                <div style="clear:both"></div>
+                            </div>
+                            <div class="panel-body done-{{ note.done }}">
+                                <div class="wrapword" ng-bind-html="note.content | formatText"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

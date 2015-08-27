@@ -1,0 +1,27 @@
+<div class="scrollable">
+    <div class="scrollable-header alert alert-info">
+        {{remain()}} of {{ notes.length }} remaining
+        <span class="pull-right">
+        <a style="margin-right:5px;" ui-sref=".cardView"><i class="fa fa-th-large fa-lg"></i></a>
+        <a ui-sref=".listView"><i class="fa fa-list fa-lg"></i></a>
+        </span>
+        <div ng-show="showLimitWarning">
+            <hr/>
+            <span class="warning-text">The number of notes has reached the limit!</span>
+        </div>
+    </div>
+    <div class="app-content" ui-view></div>
+</div>
+<div ui-content-for="addNote">
+    <div class="btn-group justified">
+        <center>
+            <button href="" ui-turn-on="noteModal" class="btn btn-navbar btn-icon-only" ng-click="openNewModal()" ng-disabled="notes.length>=50"><i class="fa fa-plus"></i></button>
+        </center>
+    </div>
+</div>
+<div ui-content-for="modals">
+    <div ng-include="'/templates/noteModal.html'"></div>
+</div>
+<div ui-content-for="quit">
+    <a ng-click="logout()" class="btn"><small>Logout</small></a>
+</div>
